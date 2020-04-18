@@ -1,0 +1,12 @@
+Design overview: In this project every action is decleared by a c function. We have prompt 			function to hande all commands and act them properly. In prompt method firs we 			declare our char arrays for commands and create a pthread_t pth to handle with 			concurrent commands.We have a while loop to ask to user a command until he type 		exit. First thing firs I have splitted the user command in order to decide which 			commands  will be executed sequentially which ones concurently.
+		when I splitting I created a 2 string array for cocncurrent and sequential 			commands and 2 pthread array for holding concurrent commands as it needs. End of 			my prompt fucntion is simply iterate over these 2 string arrays sequential and 			concurrent array and call 2 method first one is SequentialCommands for sequential 			command other one is ConcurrentCommands for concurrent commands. These 2 methods 			excepts command strings as parameters and handle them properly.
+		Each action has it own methods like split haid tail extc. each function calle in 
+		SequentialCommands and ConcurrentCommands functions accordingly but the main 			difference is ConcurrentCommands function calling with using pthreads beacuse we
+		want to execute concurrently.
+
+Complete specification: For ambiguities splitToken fucntion trys to split commands with : , ; and >			If the function couldn't split string immediately gives a error and 				ask again
+
+Known bugs or problems: There are several errors and bugs in my code. First confusion of program is sppitting commands sometimes some functions like replace doesn't work when we write it end od the commands ex: lineCount input.txt ; replace input.txt  doesn't work but when we erite replace input.txt ; lineCount input.txt. Also insert and replace functions itselfs there are some bugs when we call it with threads. I assume that I used mutexs wrongly with file opearations.		
+
+
+FURKAN AKGUN 20660829834	
